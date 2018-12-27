@@ -6,15 +6,10 @@
 
 		_Color("Color", Color) = (0,0.5,0.5,1)
 
-		_WindowPosition("WindowPosition", vector)= (1,2,3)
+		_Range("Range" ,Range(0,0.2)) = 0.05
 
-		_WindowWidth("WindowWidth", float) = 0
+		_Intensity("Intensity" ,float) = 8.0
 
-		_WindowHeight("WindowHeight", float) = 0
-
-		_PositionX("PositionX", float) = 0
-
-		_IfFloor("IfFloor",int) = 0
 
 	}
 	SubShader
@@ -52,12 +47,24 @@
 			float4 _MainTex_ST;
 			fixed4 _Color;
 
-			float4 _WindowPosition;
-			float _WindowWidth;
-			float _WindowHeight;
 			float Position;
-			float _PositionX;
+
+
+
+			float4 _WindowPositionArray[10];
+			float _WindowWidthArray[10];
+			float _WindowHeightArray[10];
+			int _WindowsCount;
 			int _IfFloor;
+			float _Range;
+			float _Intensity;
+
+			float4 _PointPosition[100];
+			float _PointLightFactor[100];
+			int _PointsCount = 0;
+
+
+
 
 			float GetIllumination(float3 PointPosition, float3 WindowPosition, float WindowWidth, float WindowHeight)
 			{
@@ -101,27 +108,30 @@
 
 				//col(_Color, 1);
 				Position = i.vertex;
+				fixed Factor = 0;
+				
+				for (int Index = 0; Index < _WindowsCount; Index++)
+				{
+					Factor = Factor + GetIllumination(i.worldPos, _WindowPositionArray[Index], _WindowWidthArray[Index], _WindowHeightArray[Index]);
+				}
 
-				fixed Factor = GetIllumination(i.worldPos, _WindowPosition, _WindowWidth, _WindowHeight);
+				if (_Range != 0)
+				{
+					float Offset = (floor(Factor * 1000) % (_Range * 1000)) / 1000.0;
+					Factor = Factor - Offset;
+					//if (Offset == 0)
+					//{
+					//	Factor = 1;
+					//}
+				}
 
 				fixed4 ColorPoint;
-	
-				if (_IfFloor == 0)
-				{
-					ColorPoint = _Color * Factor * 10;
-				}
-				else
-				{
-					ColorPoint = floor(_Color * Factor * 100) / 10.0;
-				}
 
+				ColorPoint = _Color * Factor * _Intensity;
 
 				return ColorPoint;
 			}
-
-
-				
-
+			
 			ENDCG
 		}
 	}
