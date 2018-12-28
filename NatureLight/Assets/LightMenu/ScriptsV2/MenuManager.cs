@@ -17,6 +17,7 @@ namespace NatureLight
         [Header("侧窗的属性")]
         public GameObject SideWindowWidth;
         public GameObject SideWindowHeight;
+        public GameObject WindowSillWidth;
         public GameObject SideWindowGroundHeight;
 
         [Header("天窗的属性")]
@@ -43,8 +44,6 @@ namespace NatureLight
         private WindowProperty DisplayWindowProperty = new WindowProperty();
 
 
-
-
         // Use this for initialization
         void Start()
         {
@@ -58,19 +57,19 @@ namespace NatureLight
         }
 
 
-        //面板调用——改变天窗的形式
+        //面板调用——天窗——改变天窗的形式
         public void SwitchSkylightForm(int Form)
         {
             SkylightManager.GetComponent<SkylightManager>().SwitchSkylightForm(Form);
         }
 
-        //面板调用——用新的面板属性 设置天窗
+        //面板调用——天窗——用新的面板属性 设置天窗
         public void SetSkylightPorperty(SkylightProperty NewProperty)
         {
             SkylightManager.GetComponent<SkylightManager>().SetSkylightPorperty(NewProperty);
         }
 
-        //天窗调用——更新面板上的属性值
+        //天窗调用——天窗——更新面板上的属性值
         public void UpdateSkylightPropertyValue(SkylightProperty NewProperty)
         {
             DisplayProperty = NewProperty;
@@ -80,6 +79,7 @@ namespace NatureLight
             SetValue(SkylightGroundHeight, NewProperty.GroundHeight);
         }
 
+        //面板调用——天窗——更改面板属性值
         private void SetValue(GameObject Property , float Value)
         {
             Property.GetComponentInChildren<InputField>().text = (Mathf.Floor(100 * Value)).ToString();
@@ -87,7 +87,7 @@ namespace NatureLight
         }
   
 
-        //面板调用——用户输入天窗的属性值
+        //面板调用——天窗——用户输入天窗的属性值
         public void InputPropertyValue()
         {
             float NewValue = 0;
@@ -99,6 +99,8 @@ namespace NatureLight
 
         }
 
+
+        //面板调用——天窗——滑条输入高度
         public void InputPropertySliderValue()
         {
             float NewValue = 0;
@@ -110,7 +112,7 @@ namespace NatureLight
 
         }
 
-
+        //面板调用——天窗——输入偏移
         public void InputPropertyValueOffset()
         {
             float NewValue = 0;
@@ -122,6 +124,8 @@ namespace NatureLight
 
         }
 
+
+        //面板调用——天窗——滑条输入偏移
         public void InputPropertySliderValueOffset()
         {
             float NewValue = 0;
@@ -136,28 +140,30 @@ namespace NatureLight
 
 
 
-        //面板调用——改变侧窗的形式
+        //面板调用——侧窗——改变侧窗的形式
         public void SwitchWindowForm(int Form)
         {
             WindowManager.GetComponent<WindowManager>().SwitchWindowForm(Form);
         }
 
-        //面板调用——用新的面板属性 设置侧窗
+        //面板调用——侧窗——更新侧窗
         public void SetWindowPorperty(WindowProperty NewProperty)
         {
             WindowManager.GetComponent<WindowManager>().SetWindowPorperty(NewProperty);
         }
 
-        //侧窗调用——更新面板上的属性值
+        //侧窗调用——侧窗——更新面板上的属性值
         public void UpdateWindowPropertyValue(WindowProperty NewProperty)
         {
             DisplayWindowProperty = NewProperty;
             SetValue(SideWindowWidth, NewProperty.Width);
             SetValue(SideWindowHeight, NewProperty.Height);
+            SetValue(WindowSillWidth, NewProperty.SillWidth);
             SetValue(SideWindowGroundHeight, NewProperty.GroundHeight);
+            SideWindowWidth.GetComponentInChildren<Slider>().maxValue = NewProperty.WidthRange * 100;
         }
 
-        //面板调用——用户输入天窗的属性值
+        //面板调用——侧窗——用属性值改变侧窗
         public void InputWindowPropertyValue()
         {
             float NewValue = 0;
@@ -169,9 +175,7 @@ namespace NatureLight
 
         }
 
-
-
-        //面板调用——用户输入天窗的属性值
+        //面板调用——侧窗——输入宽度
         public void InputWindowWidthValue()
         {
             float NewValue = 0;
@@ -183,7 +187,7 @@ namespace NatureLight
 
         }
 
-        //面板调用——侧窗——滑条
+        //面板调用——侧窗——滑条输入宽度
         public void InputWindowWidthSliderValue()
         {
             float NewValue = 0;
@@ -195,7 +199,7 @@ namespace NatureLight
 
         }
 
-
+        //面板调用——侧窗——输入高度
         public void InputWindowHeightValue()
         {
             float NewValue = 0;
@@ -207,7 +211,7 @@ namespace NatureLight
 
         }
 
-        //面板调用——滑条——
+        //面板调用——侧窗——滑条输入高度
         public void InputWindowHeightSliderValue()
         {
             float NewValue = 0;
@@ -218,7 +222,7 @@ namespace NatureLight
             SetWindowPorperty(DisplayWindowProperty);
         }
 
-        //面板调用——输入——GroundHeight
+        //面板调用——侧窗——输入GroundHeight
         public void InputWindowGHeightValue()
         {
             float NewValue = 0;
@@ -230,7 +234,7 @@ namespace NatureLight
 
         }
 
-        //面板调用——滑条——GroundHeight
+        //面板调用——侧窗——滑条输入GroundHeight
         public void InputWindowGHeightSliderValue()
         {
             float NewValue = 0;

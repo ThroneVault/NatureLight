@@ -154,6 +154,7 @@ public class CappedSectionBox : MonoBehaviour {
                 dragging = false;
             }
         }
+
 	}
 
     public void HideCage(bool val)
@@ -178,4 +179,5 @@ public class CappedSectionBox : MonoBehaviour {
 
         CreateObject.transform.position = b.center;
     }
+
 }
