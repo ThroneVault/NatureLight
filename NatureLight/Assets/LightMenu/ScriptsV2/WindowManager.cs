@@ -16,8 +16,9 @@ namespace NatureLight
     {
         public float Width;
         public float Height;
-        public float SlidWidth;
+        public float SillWidth;
         public float GroundHeight;
+        public float WidthRange;
     }
 
     public class WindowManager : MonoBehaviour
@@ -169,14 +170,15 @@ namespace NatureLight
             {
                 CurrentProperty.Width = windows[0].GetComponent<SideWindow>().GetWindowParameter().WindowWidth;
                 CurrentProperty.Height = windows[0].GetComponent<SideWindow>().GetWindowParameter().WindowHeight;
-                CurrentProperty.SlidWidth = 0.2f;
+                CurrentProperty.SillWidth = 0.2f;
                 CurrentProperty.GroundHeight = windows[0].GetComponent<SideWindow>().GetWindowParameter().WindowPosition.y - (-3.11f);
+                CurrentProperty.WidthRange = Length / windows.Count;
             }
             else
             {
                 CurrentProperty.Width = 0;
                 CurrentProperty.Height = 0;
-                CurrentProperty.SlidWidth = 0;
+                CurrentProperty.SillWidth = 0;
                 CurrentProperty.GroundHeight = 0;
             }
                 //更新面板上的属性值

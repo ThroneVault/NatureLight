@@ -73,13 +73,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 0
     - _Parallax: 0.02
-    - _RimMultiplier: 2.8
-    - _RimPower: 15.26
+    - _RimMultiplier: 0.68
+    - _RimPower: 2.11
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TexPower: 15.91
+    - _TexPower: 20
     - _TriplanarSpace: 1
     - _UVFreeBumped: 1
     - _UVFreeLocal: 0
@@ -87,11 +87,11 @@ Material:
     - _UVFreeVertexColor: 0
     - _UVSec: 0
     - _UsingSpecGlossMap: 0
-    - _VertexColorStrength: 0.395
+    - _VertexColorStrength: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.2830189, g: 0.26566395, b: 0.26566395, a: 1}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0.3018868, g: 0.2748309, b: 0.2748309, a: 1}
+    - _RimColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
